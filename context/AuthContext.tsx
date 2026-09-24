@@ -25,9 +25,6 @@ const GUEST_PRESETS = [
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser, hydrated] = useLocalStorage<Profile | null>("eh_user", null);
 
-  // Placeholder for firebase's signInWithPopup(auth, googleProvider).
-  // Kept async and network-shaped on purpose, so swapping in the real
-  // implementation later is a one-line change in this function only.
   async function signInWithGoogle() {
     await new Promise((r) => setTimeout(r, 550));
     const preset = GUEST_PRESETS[Math.floor(Math.random() * GUEST_PRESETS.length)];

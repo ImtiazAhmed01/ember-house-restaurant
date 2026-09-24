@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CalendarDays, X } from "lucide-react";
+import { CalendarDays, X, ArrowRight } from "lucide-react";
 import { useBooking } from "@/context/BookingContext";
 import { useToast } from "@/context/ToastContext";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -30,44 +30,77 @@ export function BookingsTab() {
   }
 
   return (
-    <ul className="max-w-lg space-y-3">
-      {reservations.map((r) => {
-        const upcoming = new Date(`${r.date}T${r.time}`) >= new Date();
-        return (
-          <li
-            key={r.id}
-            className="flex items-start justify-between gap-3 rounded-card border border-ink/10 bg-white/40 p-4"
-          >
-            <div>
-              <p className="font-display text-base text-ink">
-                {formatDateLong(r.date)} · {formatTime12(r.time)}
-              </p>
-              <p className="mt-0.5 text-sm text-ink/55">Party of {r.partySize} · {r.name}</p>
-              {r.notes && <p className="mt-1 text-xs text-ink/40">"{r.notes}"</p>}
-              <span
-                className={cx(
-                  "mt-2 inline-block rounded-pill px-2.5 py-0.5 text-[10px] font-medium",
-                  upcoming ? "bg-herb/15 text-herb" : "bg-ink/8 text-ink/45"
+    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <ul className="max-w-2xl grid gap-4 sm:grid-cols-2">
+        {reservations.map((r) => {
+          const upcoming = new Date(`${r.date}T${r.time}`) >= new Date();
+          return (
+            <li
+              key={r.id}
+              className={cx(
+                "group relative flex flex-col justify-between gap-3 rounded-card border bg-white/60 p-5 shadow-sm transition duration-300 hover:shadow-md",
+                upcoming ? "border-ink/10 hover:border-ink/20" : "border-ink/5 opacity-80 hover:opacity-100"
+              )}
+            >
+              <div>
+                <p className="font-display text-lg text-ink">
+                  {formatDateLong(r.date)}
+                </p>
+                <p className="text-sm font-medium text-ink/70">
+                  {formatTime12(r.time)}
+                </p>
+                
+                <div className="mt-3 flex items-center gap-2 text-sm text-ink/60">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/5 text-xs font-semibold text-ink">
+                    {r.partySize}
+                  </span>
+                  <span>Guests under "{r.name}"</span>
+                </div>
+                
+                {r.notes && (
+                  <p className="mt-3 text-xs italic text-ink/50 bg-ink/5 p-2 rounded-md">
+                    "{r.notes}"
+                  </p>
                 )}
-              >
-                {upcoming ? "Upcoming" : "Past"}
-              </span>
-            </div>
-            {upcoming && (
-              <button
-                onClick={() => {
-                  cancelReservation(r.id);
-                  push("Booking cancelled", "info");
-                }}
-                aria-label="Cancel booking"
-                className="shrink-0 rounded-full p-2 text-ink/40 hover:bg-brick/10 hover:text-brick"
-              >
-                <X size={16} />
-              </button>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+              </div>
+              
+              <div className="mt-4 flex items-center justify-between border-t border-ink/8 pt-4">
+                <span
+                  className={cx(
+                    "inline-flex items-center gap-1.5 rounded-pill px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider",
+                    upcoming ? "bg-herb/15 text-herb" : "bg-ink/8 text-ink/45"
+                  )}
+                >
+                  <CalendarDays size={12} />
+                  {upcoming ? "Upcoming" : "Past"}
+                </span>
+                
+                {upcoming && (
+                  <button
+                    onClick={() => {
+                      cancelReservation(r.id);
+                      push("Booking cancelled", "info");
+                    }}
+                    aria-label="Cancel booking"
+                    className="shrink-0 rounded-full p-2 text-ink/40 transition hover:bg-brick/10 hover:text-brick"
+                    title="Cancel booking"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      
+      <div className="max-w-2xl flex justify-center border-t border-ink/10 pt-6">
+        <Link href="/booking">
+          <Button variant="secondary" className="flex items-center gap-2 shadow-sm hover:shadow">
+            Book another table <ArrowRight size={16} />
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 }

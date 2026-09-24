@@ -6,12 +6,14 @@ import { GoogleButtonPlaceholder } from "@/components/auth/GoogleButtonPlacehold
 import { DetailsTab } from "@/components/profile/DetailsTab";
 import { BookingsTab } from "@/components/profile/BookingsTab";
 import { OrdersTab } from "@/components/profile/OrdersTab";
+import { WaitlistTab } from "@/components/profile/WaitlistTab";
 import { useAuth } from "@/context/AuthContext";
 import { cx } from "@/lib/utils";
 
 const TABS = [
     { id: "details", label: "My details" },
     { id: "bookings", label: "Bookings" },
+    { id: "waitlist", label: "Waitlist" },
     { id: "orders", label: "Orders" },
 ] as const;
 
@@ -41,19 +43,19 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="px-5 pt-6 sm:px-6">
-            <div className="mb-6">
-                <p className="text-xs font-medium uppercase tracking-wide text-brick">Account</p>
-                <h1 className="mt-1 font-display text-3xl text-ink">Your profile</h1>
+        <div className="mx-auto max-w-4xl px-5 pt-6 pb-20 sm:px-6 lg:px-8">
+            <div className="mb-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-brick/80">Account</p>
+                <h1 className="mt-2 font-display text-4xl text-ink">Your profile</h1>
             </div>
 
-            <div className="mb-6 flex gap-1 border-b border-ink/8">
+            <div className="mb-8 flex gap-2 border-b border-ink/10 overflow-x-auto no-scrollbar">
                 {TABS.map((t) => (
                     <button
                         key={t.id}
                         onClick={() => setTab(t.id)}
                         className={cx(
-                            "relative px-3.5 py-2.5 text-sm font-medium transition-colors",
+                            "relative whitespace-nowrap px-4 py-3 text-sm font-medium transition-colors",
                             tab === t.id ? "text-ink" : "text-ink/45 hover:text-ink/70"
                         )}
                     >
@@ -68,9 +70,12 @@ export default function ProfilePage() {
                 ))}
             </div>
 
-            {tab === "details" && <DetailsTab />}
-            {tab === "bookings" && <BookingsTab />}
-            {tab === "orders" && <OrdersTab />}
+            <div className="mt-6">
+                {tab === "details" && <DetailsTab />}
+                {tab === "bookings" && <BookingsTab />}
+                {tab === "waitlist" && <WaitlistTab />}
+                {tab === "orders" && <OrdersTab />}
+            </div>
         </div>
     );
 }
