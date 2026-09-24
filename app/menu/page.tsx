@@ -34,7 +34,7 @@ export default function MenuPage() {
         <div className="px-5 pt-6 sm:px-6">
             <div className="mb-5">
                 <p className="text-xs font-medium uppercase tracking-wide text-brick">Menu</p>
-                <h1 className="mt-1 font-display text-3xl text-ink">What's cooking today</h1>
+                <h1 className="mt-1 font-display text-3xl text-ink">{"What's cooking today"}</h1>
             </div>
 
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">

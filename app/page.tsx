@@ -69,7 +69,7 @@ export default function HomePage() {
           <CalendarDays size={22} className="text-saffron-bright" />
           <h3 className="mt-4 font-display text-xl">Book a table</h3>
           <p className="mt-1.5 max-w-[26ch] text-sm text-paper/65">
-            Pick a date, time, and party size — we'll hold the table for you.
+            {"Pick a date, time, and party size — we'll hold the table for you."}
           </p>
           <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-saffron-bright">
             Check availability

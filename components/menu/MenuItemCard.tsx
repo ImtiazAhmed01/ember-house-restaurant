@@ -68,7 +68,7 @@ export function MenuItemCard({
           )}
           {item.chefPick && (
             <span className="rounded-pill bg-herb/15 px-2 py-0.5 text-[10px] font-medium text-herb">
-              Chef's pick
+              {"Chef's pick"}
             </span>
           )}
 

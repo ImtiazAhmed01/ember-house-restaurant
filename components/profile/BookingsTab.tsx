@@ -49,21 +49,21 @@ export function BookingsTab() {
                 <p className="text-sm font-medium text-ink/70">
                   {formatTime12(r.time)}
                 </p>
-                
+
                 <div className="mt-3 flex items-center gap-2 text-sm text-ink/60">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/5 text-xs font-semibold text-ink">
                     {r.partySize}
                   </span>
-                  <span>Guests under "{r.name}"</span>
+                  <span>{"Guests under "}{r.name}</span>
                 </div>
-                
+
                 {r.notes && (
                   <p className="mt-3 text-xs italic text-ink/50 bg-ink/5 p-2 rounded-md">
-                    "{r.notes}"
+                    {r.notes}
                   </p>
                 )}
               </div>
-              
+
               <div className="mt-4 flex items-center justify-between border-t border-ink/8 pt-4">
                 <span
                   className={cx(
@@ -74,7 +74,7 @@ export function BookingsTab() {
                   <CalendarDays size={12} />
                   {upcoming ? "Upcoming" : "Past"}
                 </span>
-                
+
                 {upcoming && (
                   <button
                     onClick={() => {
@@ -93,7 +93,7 @@ export function BookingsTab() {
           );
         })}
       </ul>
-      
+
       <div className="max-w-2xl flex justify-center border-t border-ink/10 pt-6">
         <Link href="/booking">
           <Button variant="secondary" className="flex items-center gap-2 shadow-sm hover:shadow">

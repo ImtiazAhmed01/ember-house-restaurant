@@ -47,8 +47,8 @@ export function HeroReveal() {
             A table by the fire, or dinner at yours.
           </motion.h1>
           <motion.p variants={rise} className="mt-5 max-w-[42ch] text-base text-ink/60 sm:text-lg">
-            Slow-cooked rice, live-coal grill, and a menu built around what's good today.
-            Reserve a table or start an order — either way, we're ready for you.
+            {"Slow-cooked rice, live-coal grill, and a menu built around what's good today."}
+            {"Reserve a table or start an order - either way, we're ready for you."}
           </motion.p>
           <motion.div variants={rise} className="mt-7 flex flex-wrap items-center gap-3">
             <Link href="/booking">

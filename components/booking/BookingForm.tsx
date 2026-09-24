@@ -195,8 +195,8 @@ export function BookingForm() {
                             Parties over {MAX_ONLINE_PARTY_SIZE} need a personal touch
                         </p>
                         <p className="mt-1.5 text-sm text-ink/60">
-                            For {partySize} guests we'll need to arrange seating by hand. Call us and we'll
-                            sort it directly, or join the waitlist and we'll call you back.
+                            {` For ${partySize} guests we'll need to arrange seating by hand. Call us and we'll `}
+                            {"sort it directly, or join the waitlist and we'll call you back."}
                         </p>
                         <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                             <a href="tel:+8801700000000">

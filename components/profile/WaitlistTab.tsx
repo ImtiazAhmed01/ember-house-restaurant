@@ -46,10 +46,10 @@ export function WaitlistTab() {
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/5 text-xs font-semibold text-ink">
                   {w.partySize}
                 </span>
-                <span>Guests under "{w.name}"</span>
+                <span>Guests under {w.name}</span>
               </div>
             </div>
-            
+
             <div className="mt-2 flex items-center justify-between border-t border-ink/8 pt-4">
               <span className="inline-flex items-center gap-1.5 rounded-pill bg-saffron/20 px-2.5 py-1 text-xs font-medium text-saffron-deep">
                 <Clock size={12} /> Waitlisted
@@ -58,7 +58,7 @@ export function WaitlistTab() {
           </li>
         ))}
       </ul>
-      
+
       <div className="max-w-2xl flex justify-center border-t border-ink/10 pt-6">
         <Link href="/booking">
           <Button variant="secondary" className="flex items-center gap-2">
